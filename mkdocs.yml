@@ -3,8 +3,6 @@ theme:
   name: material
 
 nav:
-  - Home: index.md
-  - Installation: installation.md
   - User Guides:
       - Quick Start: guides/setup.md
       - Advanced Usage: guides/advanced.md
