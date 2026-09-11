@@ -1,0 +1,1810 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.github.io/av-qgis-documentation/fr/guides/geometrische-bearbeitung/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+      
+        
+          <link rel="alternate" href="../../../guides/geometrische-bearbeitung/" hreflang="de">
+        
+          <link rel="alternate" href="./" hreflang="fr">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Édition géométrique - AV QGIS Dokumentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#edition-geometrique" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../" title="AV QGIS Dokumentation" class="md-header__button md-logo" aria-label="AV QGIS Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AV QGIS Dokumentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Édition géométrique
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.768 3.96zl-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Sélectionner la langue">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../guides/geometrische-bearbeitung/" hreflang="de" class="md-select__link">
+              Deutsch
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="fr" class="md-select__link">
+              Français
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Partager" aria-label="Partager" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="AV QGIS Dokumentation" class="md-nav__button md-logo" aria-label="AV QGIS Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AV QGIS Dokumentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Édition géométrique
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Édition géométrique
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creer-une-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer une géométrie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Créer une géométrie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#199-parallelisme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        199 - Parallélisme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-points-choisis-librement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        200 - Points choisis librement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#201-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        201 - Direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#202-indication-de-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        202 - Indication de distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#203-direction-et-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        203 - Direction et distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-arc-de-cercle-via-rayoncentre-ou-deux-points-de-larc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        204 - Arc de cercle via rayon/centre ou deux points de l'arc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#205-arc-de-cercle-via-trois-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        205 - Arc de cercle via trois points
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#209-copier-des-geometries-existantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        209 - Copier des géométries existantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-import-de-points-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        211 - Import de points (géométrie)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2111-eviter-automatiquement-les-recouvrements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        211.1 - Éviter automatiquement les recouvrements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-prolongation-libre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        215 - Prolongation : libre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216-prolongation-par-indication-de-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        216 - Prolongation par indication de distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217-prolongation-jusqua-lintersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        217 - Prolongation jusqu'à l'intersection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218-rognage-libre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        218 - Rognage : libre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#219-rognage-par-indication-de-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        219 - Rognage par indication de distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#220-rognage-jusqua-lintersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        220 - Rognage jusqu'à l'intersection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#221-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        221 - Rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-deplacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        222 - Déplacement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-continuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        223 - Continuer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-supprimer-un-nud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        224 - Supprimer un nœud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#225-inserer-un-nud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        225 - Insérer un nœud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#226-copier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        226 - Copier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#227-copier-parallelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        227 - Copier parallèlement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#231-separer-ligne-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        231 - Séparer : ligne-ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-separer-ligne-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        234 - Séparer : ligne-surface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-separer-surface-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        236 - Séparer : surface-surface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-suppression-de-geometries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        237 - Suppression de géométries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#240-242-mesurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        240-242 Mesurer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#244-246-250-fonctions-daccrochage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        244-246, 250 Fonctions d'accrochage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#247-fonction-daccrochage-intersection-etendue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        247 Fonction d'accrochage : intersection étendue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#251-fonction-daccrochage-angle-droitquadrant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        251 - Fonction d'accrochage : angle droit/quadrant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#252-fonction-daccrochage-aretepoint-le-plus-proche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        252 - Fonction d'accrochage : arête/point le plus proche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#253-fonction-daccrochage-pied-de-la-perpendiculaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        253 - Fonction d'accrochage : pied de la perpendiculaire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#254-fonction-daccrochage-centroide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        254 - Fonction d'accrochage : centroïde
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#255-fonction-daccrochage-pour-les-points-p-ex-point-limite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        255 - Fonction d'accrochage pour les points (p. ex. point limite)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#258-la-selection-dans-la-table-met-en-evidence-la-geometrie-sur-la-carte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        258 - La sélection dans la table met en évidence la géométrie sur la carte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#259-la-selection-sur-la-carte-met-en-evidence-dans-la-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        259 - La sélection sur la carte met en évidence dans la table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#264-symbole-oriente-parallele-a-la-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        264 - Symbole orienté : parallèle à la ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#265-symbole-oriente-libre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        265 - Symbole orienté : libre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#266-symbole-oriente-saisir-langle-de-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        266 - Symbole orienté : saisir l'angle de rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#268-texte-oriente-parallele-a-la-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        268 - Texte orienté : parallèle à la ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#269-texte-oriente-libre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        269 - Texte orienté : libre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#270-texte-oriente-saisir-langle-de-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        270 - Texte orienté : saisir l'angle de rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creer-une-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer une géométrie
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Créer une géométrie">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#199-parallelisme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        199 - Parallélisme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-points-choisis-librement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        200 - Points choisis librement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#201-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        201 - Direction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#202-indication-de-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        202 - Indication de distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#203-direction-et-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        203 - Direction et distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-arc-de-cercle-via-rayoncentre-ou-deux-points-de-larc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        204 - Arc de cercle via rayon/centre ou deux points de l'arc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#205-arc-de-cercle-via-trois-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        205 - Arc de cercle via trois points
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#209-copier-des-geometries-existantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        209 - Copier des géométries existantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-import-de-points-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        211 - Import de points (géométrie)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2111-eviter-automatiquement-les-recouvrements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        211.1 - Éviter automatiquement les recouvrements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-prolongation-libre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        215 - Prolongation : libre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216-prolongation-par-indication-de-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        216 - Prolongation par indication de distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217-prolongation-jusqua-lintersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        217 - Prolongation jusqu'à l'intersection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218-rognage-libre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        218 - Rognage : libre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#219-rognage-par-indication-de-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        219 - Rognage par indication de distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#220-rognage-jusqua-lintersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        220 - Rognage jusqu'à l'intersection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#221-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        221 - Rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-deplacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        222 - Déplacement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-continuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        223 - Continuer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-supprimer-un-nud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        224 - Supprimer un nœud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#225-inserer-un-nud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        225 - Insérer un nœud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#226-copier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        226 - Copier
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#227-copier-parallelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        227 - Copier parallèlement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#231-separer-ligne-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        231 - Séparer : ligne-ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-separer-ligne-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        234 - Séparer : ligne-surface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-separer-surface-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        236 - Séparer : surface-surface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-suppression-de-geometries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        237 - Suppression de géométries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#240-242-mesurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        240-242 Mesurer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#244-246-250-fonctions-daccrochage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        244-246, 250 Fonctions d'accrochage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#247-fonction-daccrochage-intersection-etendue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        247 Fonction d'accrochage : intersection étendue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#251-fonction-daccrochage-angle-droitquadrant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        251 - Fonction d'accrochage : angle droit/quadrant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#252-fonction-daccrochage-aretepoint-le-plus-proche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        252 - Fonction d'accrochage : arête/point le plus proche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#253-fonction-daccrochage-pied-de-la-perpendiculaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        253 - Fonction d'accrochage : pied de la perpendiculaire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#254-fonction-daccrochage-centroide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        254 - Fonction d'accrochage : centroïde
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#255-fonction-daccrochage-pour-les-points-p-ex-point-limite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        255 - Fonction d'accrochage pour les points (p. ex. point limite)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#258-la-selection-dans-la-table-met-en-evidence-la-geometrie-sur-la-carte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        258 - La sélection dans la table met en évidence la géométrie sur la carte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#259-la-selection-sur-la-carte-met-en-evidence-dans-la-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        259 - La sélection sur la carte met en évidence dans la table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#264-symbole-oriente-parallele-a-la-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        264 - Symbole orienté : parallèle à la ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#265-symbole-oriente-libre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        265 - Symbole orienté : libre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#266-symbole-oriente-saisir-langle-de-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        266 - Symbole orienté : saisir l'angle de rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#268-texte-oriente-parallele-a-la-ligne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        268 - Texte orienté : parallèle à la ligne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#269-texte-oriente-libre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        269 - Texte orienté : libre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#270-texte-oriente-saisir-langle-de-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        270 - Texte orienté : saisir l'angle de rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="edition-geometrique">Édition géométrique<a class="headerlink" href="#edition-geometrique" title="Permanent link">&para;</a></h1>
+<h2 id="creer-une-geometrie">Créer une géométrie<a class="headerlink" href="#creer-une-geometrie" title="Permanent link">&para;</a></h2>
+<h3 id="199-parallelisme">199 - Parallélisme<a class="headerlink" href="#199-parallelisme" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../assets/images/geometrische-bearbeitung/media/image34.png" style="width:3.10417in;height:2.27778in" /></td>
+<td><img src="../../assets/images/geometrische-bearbeitung/media/image44.png" style="width:1.94271in;height:0.99368in" /></td>
+</tr>
+<tr>
+<td><img src="../../assets/images/geometrische-bearbeitung/media/image5.png" style="width:3.10417in;height:0.61111in" /><img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.31771in;height:0.31771in" /></td>
+<td><img src="../../assets/images/geometrische-bearbeitung/media/image41.png" style="width:2.76563in;height:1.69888in" /></td>
+</tr>
+</tbody>
+</table>
+<p>Activer les barres d'outils « Barre d'outils de numérisation avancée » et « Outils d'accrochage ».</p>
+<p>En mode édition, sélectionner l'outil « Ajouter un objet » et activer les outils de numérisation avancée.</p>
+<p>Activer l'accrochage afin de pouvoir sélectionner un segment parallèlement auquel dessiner. Sélectionner « Dessiner en parallèle ».</p>
+<p><a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#parallel-and-perpendicular-lines"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#parallel-and-perpendicular-lines</u></a></p>
+<h3 id="200-points-choisis-librement">200 - Points choisis librement<a class="headerlink" href="#200-points-choisis-librement" title="Permanent link">&para;</a></h3>
+<p>Activer le mode édition sur la couche de points. Sélectionner l'outil « Ajouter un objet ponctuel ». Créer un nouveau point d'un clic sur la carte.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image43.png" style="width:3.07813in;height:1.24118in" /></p>
+<h3 id="201-direction">201 - Direction<a class="headerlink" href="#201-direction" title="Permanent link">&para;</a></h3>
+<p>Dans les outils de numérisation avancée, il est possible d'imposer un angle (direction), pour le dessin direct ou comme ligne de construction.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image36.png" style="width:4.30483in;height:2.23256in" /></p>
+<h3 id="202-indication-de-distance">202 - Indication de distance<a class="headerlink" href="#202-indication-de-distance" title="Permanent link">&para;</a></h3>
+<p>Dans les outils de numérisation avancée, il est possible d'imposer une distance, pour le dessin direct ou comme ligne de construction.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image42.png" style="width:4.30729in;height:2.40905in" /></p>
+<h3 id="203-direction-et-distance">203 - Direction et distance<a class="headerlink" href="#203-direction-et-distance" title="Permanent link">&para;</a></h3>
+<p>Une combinaison de direction et de distance est possible — pour le dessin direct ou comme ligne de construction.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image20.png" style="width:4.27604in;height:2.23375in" /></p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr>
+<td><p>Pour 201-203 : <a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#absolute-reference-digitizing"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#absolute-reference-digitizing</u></a></p>
+<p>Et <a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#construction-mode"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#construction-mode</u></a></p></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="204-arc-de-cercle-via-rayoncentre-ou-deux-points-de-larc">204 - Arc de cercle via rayon/centre ou deux points de l'arc<a class="headerlink" href="#204-arc-de-cercle-via-rayoncentre-ou-deux-points-de-larc" title="Permanent link">&para;</a></h3>
+<p>Avec la « Barre d'outils de formes », il est possible de créer des cercles via rayon et centre ou via deux points de l'arc. La même fonction n'est pas disponible pour les arcs de cercle.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image32.png" style="width:3.38854in;height:1.3867in" /></p>
+<p>Les arcs de cercle peuvent être créés dans la « Barre d'outils de formes » à l'aide de deux points d'arc et de l'indication du rayon.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image6.png" style="width:2.95373in;height:1.64677in" /><img src="../../assets/images/geometrische-bearbeitung/media/image40.png" style="width:2.35524in;height:0.43179in" /></p>
+<h3 id="205-arc-de-cercle-via-trois-points">205 - Arc de cercle via trois points<a class="headerlink" href="#205-arc-de-cercle-via-trois-points" title="Permanent link">&para;</a></h3>
+<p>Avec la « Barre d'outils de numérisation » standard et le paramètre « Numériser avec des courbes », l'arc de cercle est dessiné à partir de 3 points.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image18.png" style="width:2.78646in;height:1.59359in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image49.png" style="width:1.74479in;height:1.60123in" /></p>
+<h3 id="209-copier-des-geometries-existantes">209 - Copier des géométries existantes<a class="headerlink" href="#209-copier-des-geometries-existantes" title="Permanent link">&para;</a></h3>
+<p>Sélectionner l'entité à copier dans la table d'attributs de la couche et <strong>Ctrl-C</strong>.</p>
+<p>Passer la couche cible en mode édition et ouvrir la table d'attributs correspondante. Ensuite <strong>Ctrl-V</strong> et adapter les valeurs d'attributs nécessaires &gt; Enregistrer.</p>
+<h3 id="211-import-de-points-geometrie">211 - Import de points (géométrie)<a class="headerlink" href="#211-import-de-points-geometrie" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image15.png" style="width:6.5in;height:1.34722in" /></p>
+<p>Menu <strong>Couche &gt; Ajouter une couche</strong> et sélectionner le type :</p>
+<p>Ajouter une couche vecteur, un fichier texte délimité, une couche PostgreSQL, une couche GPX, …</p>
+<p>Une couche peut aussi être glissée-déposée dans le projet QGIS.</p>
+<h3 id="2111-eviter-automatiquement-les-recouvrements">211.1 - Éviter automatiquement les recouvrements<a class="headerlink" href="#2111-eviter-automatiquement-les-recouvrements" title="Permanent link">&para;</a></h3>
+<p>Dans la barre d'outils d'accrochage, activer l'« édition topologique » et définir les règles de recouvrement.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image31.png" style="width:3.91146in;height:1.09696in" /></p>
+<p>Dans la configuration avancée, les règles de recouvrement peuvent être définies individuellement par couche.</p>
+<h3 id="215-prolongation-libre">215 - Prolongation : libre<a class="headerlink" href="#215-prolongation-libre" title="Permanent link">&para;</a></h3>
+<p>Avec l'outil de nœud, une géométrie peut être prolongée librement.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image21.png" style="width:1.83142in;height:1.03344in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image3.png" style="width:1.77452in;height:1.03259in" /></p>
+<h3 id="216-prolongation-par-indication-de-distance">216 - Prolongation par indication de distance<a class="headerlink" href="#216-prolongation-par-indication-de-distance" title="Permanent link">&para;</a></h3>
+<p>Avec l'outil de nœud et les outils de numérisation avancée, une géométrie peut être prolongée d'une distance déterminée.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image1.png" style="width:3.70313in;height:1.40433in" /></p>
+<h3 id="217-prolongation-jusqua-lintersection">217 - Prolongation jusqu'à l'intersection<a class="headerlink" href="#217-prolongation-jusqua-lintersection" title="Permanent link">&para;</a></h3>
+<p>Activer l'outil « Rogner/prolonger un objet ». Important : l'accrochage doit être activé sur toutes les couches et tous les segments.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image22.png" style="width:4.05729in;height:1.71655in" /></p>
+<p><a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#trim-extend-feature"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#trim-extend-feature</u></a></p>
+<p><strong>Ou</strong></p>
+<p>Dans la barre d'outils d'accrochage, activer l'accrochage aux intersections.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image4.png" style="width:1.89063in;height:0.86271in" /></p>
+<p>Activer le mode parallèle avec les outils de numérisation avancée et l'appliquer sur la ligne existante afin de prolonger ou raccourcir le dernier nœud jusqu'à l'intersection.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image33.png" style="width:2.59896in;height:2.11016in" /></p>
+<h3 id="218-rognage-libre">218 - Rognage : libre<a class="headerlink" href="#218-rognage-libre" title="Permanent link">&para;</a></h3>
+<p>Activer l'outil « Rogner/prolonger un objet ».</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image22.png" style="width:4.05729in;height:1.71655in" /></p>
+<p><a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#trim-extend-feature"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#trim-extend-feature</u></a></p>
+<h3 id="219-rognage-par-indication-de-distance">219 - Rognage par indication de distance<a class="headerlink" href="#219-rognage-par-indication-de-distance" title="Permanent link">&para;</a></h3>
+<p>Avec l'outil de nœud et les outils de numérisation avancée, une géométrie peut être rognée d'une distance déterminée.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image39.png" style="width:2.65625in;height:1.71875in" /></p>
+<h3 id="220-rognage-jusqua-lintersection">220 - Rognage jusqu'à l'intersection<a class="headerlink" href="#220-rognage-jusqua-lintersection" title="Permanent link">&para;</a></h3>
+<p>Activer l'outil « Rogner/prolonger un objet ». Important : l'accrochage doit être activé sur toutes les couches et tous les segments.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image22.png" style="width:4.05729in;height:1.71655in" /></p>
+<h3 id="221-rotation">221 - Rotation<img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38021in;height:0.38021in" /><a class="headerlink" href="#221-rotation" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image53.png" style="width:6.5in;height:2.08333in" /></p>
+<p><strong>Outils de numérisation avancée &gt; Rotation</strong>.</p>
+<h3 id="222-deplacement">222 - Déplacement<img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38021in;height:0.38021in" /><a class="headerlink" href="#222-deplacement" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image48.png" style="width:3.70313in;height:1.9685in" /></p>
+<p>Outils de numérisation avancée &gt; Déplacer.</p>
+<h3 id="223-continuer">223 - Continuer<a class="headerlink" href="#223-continuer" title="Permanent link">&para;</a></h3>
+<p>Continuer une ligne librement. Avec l'outil de nœud, cliquer sur le « + » à l'extrémité d'une ligne et poursuivre la ligne.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image38.png" style="width:1.23958in;height:2.42708in" /></p>
+<h3 id="224-supprimer-un-nud">224 - Supprimer un nœud<a class="headerlink" href="#224-supprimer-un-nud" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image29.png" style="width:1.86458in;height:1.33333in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image55.png" style="width:3.04743in;height:1.94859in" /></p>
+<p>Avec l'outil de nœud, les nœuds sélectionnés peuvent être supprimés. Il est possible de sélectionner les différents nœuds avec les flèches du clavier (ou directement par clic de souris) et de les supprimer avec <strong>Delete</strong>.</p>
+<h3 id="225-inserer-un-nud">225 - Insérer un nœud<a class="headerlink" href="#225-inserer-un-nud" title="Permanent link">&para;</a></h3>
+<p>Avec l'outil de nœud, de nouveaux nœuds peuvent être ajoutés (par double-clic ou via le signe « + » sur la géométrie).</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image26.png" style="width:2.33371in;height:1.92188in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image8.png" style="width:3.21354in;height:1.15134in" /></p>
+<h3 id="226-copier">226 - Copier<a class="headerlink" href="#226-copier" title="Permanent link">&para;</a></h3>
+<p>Copie de la géométrie existante, y compris les attributs.</p>
+<p>Soit avec l'<strong>outil d'action</strong> de la barre d'outils des attributs. Si « Dupliquer l'objet et le numériser » est sélectionné, la géométrie doit être redessinée, seuls les attributs sont repris de la géométrie d'origine. Avec « Dupliquer l'objet », l'objet est dupliqué exactement au même endroit que la géométrie d'origine. L'objet copié doit ensuite être déplacé (voir ci-dessous).</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image35.png" style="width:2.86979in;height:1.03082in" /><img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.54688in;height:0.38542in" /></p>
+<p>Ou via la barre d'outils de numérisation et les fonctions « Copier les objets », « Coller les objets ». Ensuite, l'objet inséré peut être déplacé via la barre d'outils de numérisation avancée.<img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38021in;height:0.38021in" /><img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38542in;height:0.38542in" /></p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image23.png" style="width:3.58854in;height:0.83414in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image10.png" style="width:1.71202in;height:0.85106in" /></p>
+<h3 id="227-copier-parallelement">227 - Copier parallèlement<a class="headerlink" href="#227-copier-parallelement" title="Permanent link">&para;</a></h3>
+<p>Comme au 209, dupliquer l'objet choisi avec l'outil d'action « Dupliquer l'objet ». Dans les outils de numérisation avancée, sélectionner « Déplacer l'objet », activer le mode parallèle (voir 199) et sélectionner le segment auquel l'objet doit être inséré parallèlement.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image12.png" style="width:2.15376in;height:2.86323in" /></p>
+<h3 id="231-separer-ligne-ligne">231 - Séparer : ligne-ligne<a class="headerlink" href="#231-separer-ligne-ligne" title="Permanent link">&para;</a></h3>
+<p>Outils de numérisation avancée &gt; Séparer des objets</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image47.png" style="width:1.77604in;height:1.0683in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image13.png" style="width:1.71504in;height:1.44508in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image9.png" style="width:1.44353in;height:1.07575in" /></p>
+<p>Ou, si une couche entière doit être séparée par une autre couche : Boîte à outils &gt; Diviser avec des lignes.</p>
+<h3 id="234-separer-ligne-surface">234 - Séparer : ligne-surface<a class="headerlink" href="#234-separer-ligne-surface" title="Permanent link">&para;</a></h3>
+<p>Comme 231.</p>
+<h3 id="236-separer-surface-surface">236 - Séparer : surface-surface<a class="headerlink" href="#236-separer-surface-surface" title="Permanent link">&para;</a></h3>
+<p>Peut être résolu par une polyligne (suffisant selon la discussion interne). Voir 231.</p>
+<h3 id="237-suppression-de-geometries">237 - Suppression de géométries<img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38021in;height:0.38021in" /><a class="headerlink" href="#237-suppression-de-geometries" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image17.png" style="width:3.67849in;height:2.55711in" /></p>
+<p>En mode édition, sélectionner la ou les géométries à supprimer avec l'outil de sélection et utiliser l'outil « Supprimer la sélection ».</p>
+<h3 id="240-242-mesurer">240-242 Mesurer<a class="headerlink" href="#240-242-mesurer" title="Permanent link">&para;</a></h3>
+<p>240 - Mesurer une distance</p>
+<p>241 - Mesurer un angle</p>
+<p>242 - Mesurer une surface</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image30.png" style="width:1.97326in;height:1.41383in" /></p>
+<h3 id="244-246-250-fonctions-daccrochage">244-246, 250 Fonctions d'accrochage<a class="headerlink" href="#244-246-250-fonctions-daccrochage" title="Permanent link">&para;</a></h3>
+<p>Activer la barre d'outils d'accrochage.</p>
+<p>244 - Fonction d'accrochage : point d'extrémité</p>
+<p>245 - Fonction d'accrochage : nœud</p>
+<p>246 - Fonction d'accrochage : point d'intersection</p>
+<p>250 - Fonction d'accrochage : point central</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image25.png" style="width:2.89483in;height:1.94271in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image46.png" style="width:1.41959in;height:1.1847in" /></p>
+<h3 id="247-fonction-daccrochage-intersection-etendue">247 Fonction d'accrochage : intersection étendue<a class="headerlink" href="#247-fonction-daccrochage-intersection-etendue" title="Permanent link">&para;</a></h3>
+<p>Tracer deux lignes de construction (parallèles) aux droites pour lesquelles l'intersection étendue doit être affichée. L'intersection peut alors être accrochée.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image37.png" style="width:2.58854in;height:2.4677in" /></p>
+<h3 id="251-fonction-daccrochage-angle-droitquadrant">251 - Fonction d'accrochage : angle droit/quadrant<a class="headerlink" href="#251-fonction-daccrochage-angle-droitquadrant" title="Permanent link">&para;</a></h3>
+<p>Dans la numérisation avancée, activer l'accrochage aux angles usuels. Ou utiliser des lignes de construction adaptées.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image14.png" style="width:5.01042in;height:3.89583in" /></p>
+<h3 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="252-fonction-daccrochage-aretepoint-le-plus-proche">252 - Fonction d'accrochage : arête/point le plus proche<a class="headerlink" href="#252-fonction-daccrochage-aretepoint-le-plus-proche" title="Permanent link">&para;</a></h3>
+<p>Activer l'accrochage aux segments et aux nœuds.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image7.png" style="width:3.125in;height:1.93056in" /></p>
+<p>Pour trouver le point le plus proche de l'arête, activer le mode perpendiculaire dans la numérisation avancée.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image19.png" style="width:2.84294in;height:1.47531in" /></p>
+<h3 id="253-fonction-daccrochage-pied-de-la-perpendiculaire">253 - Fonction d'accrochage : pied de la perpendiculaire<a class="headerlink" href="#253-fonction-daccrochage-pied-de-la-perpendiculaire" title="Permanent link">&para;</a></h3>
+<p>Activer l'accrochage aux segments et aux nœuds.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image7.png" style="width:3.125in;height:1.93056in" /></p>
+<p>Pour trouver le pied de la perpendiculaire, activer le mode perpendiculaire dans la numérisation avancée.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image19.png" style="width:2.84294in;height:1.47531in" /></p>
+<h3 id="254-fonction-daccrochage-centroide">254 - Fonction d'accrochage : centroïde<a class="headerlink" href="#254-fonction-daccrochage-centroide" title="Permanent link">&para;</a></h3>
+<p>Voir 250.</p>
+<h3 id="255-fonction-daccrochage-pour-les-points-p-ex-point-limite">255 - Fonction d'accrochage pour les points (p. ex. point limite)<a class="headerlink" href="#255-fonction-daccrochage-pour-les-points-p-ex-point-limite" title="Permanent link">&para;</a></h3>
+<p>Les points sont considérés comme des nœuds ; on peut donc s'y accrocher. Dans les options avancées, les paramètres peuvent être définis individuellement pour chaque couche. Il est donc possible, par exemple, de ne s'accrocher qu'à la couche des points limites.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image31.png" style="width:3.91146in;height:1.09696in" /></p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image45.png" style="width:6.5in;height:1.50449in" /></p>
+<h3 id="258-la-selection-dans-la-table-met-en-evidence-la-geometrie-sur-la-carte">258 - La sélection dans la table met en évidence la géométrie sur la carte<a class="headerlink" href="#258-la-selection-dans-la-table-met-en-evidence-la-geometrie-sur-la-carte" title="Permanent link">&para;</a></h3>
+<p>La carte et la table sont liées.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image52.png" style="width:2.65698in;height:2.38021in" /></p>
+<p>Outils de sélection dans la table : <img src="../../assets/images/geometrische-bearbeitung/media/image28.png" style="width:2.26847in;height:0.38989in" /></p>
+<h3 id="259-la-selection-sur-la-carte-met-en-evidence-dans-la-table">259 - La sélection sur la carte met en évidence dans la table<a class="headerlink" href="#259-la-selection-sur-la-carte-met-en-evidence-dans-la-table" title="Permanent link">&para;</a></h3>
+<p>Voir 258</p>
+<p>Outils de sélection sur la carte : <img src="../../assets/images/geometrische-bearbeitung/media/image54.png" style="width:1.78324in;height:0.39923in" /></p>
+<h3 id="264-symbole-oriente-parallele-a-la-ligne">264 - Symbole orienté : parallèle à la ligne<a class="headerlink" href="#264-symbole-oriente-parallele-a-la-ligne" title="Permanent link">&para;</a></h3>
+<p>Les symboles sont très flexibles. Les décalages parallèles à la ligne sont clairement possibles. Les symboles peuvent aussi être tournés.</p>
+<p>Accéder aux paramètres via le panneau de mise en forme des couches (ou via les propriétés de la couche &gt; Symbologie).</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image51.png" style="width:4.4865in;height:2.79688in" /></p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image16.png" style="width:2.83854in;height:1.97504in" /></p>
+<p>Si nécessaire, pour les lignes de marques et les lignes en pointillés, chaque marque peut être ajustée manuellement.</p>
+<p>De plus, via le générateur de géométries, il n'y a quasiment aucune limite.</p>
+<h3 id="265-symbole-oriente-libre">265 - Symbole orienté : libre<a class="headerlink" href="#265-symbole-oriente-libre" title="Permanent link">&para;</a></h3>
+<p>Les symboles sont très flexibles. Via le générateur de géométries, il n'y a quasiment aucune limite.</p>
+<p>Si les symboles doivent être positionnés totalement librement, on peut recourir aux annotations/étiquettes/géométries de points supplémentaires.</p>
+<h3 id="266-symbole-oriente-saisir-langle-de-rotation">266 - Symbole orienté : saisir l'angle de rotation<a class="headerlink" href="#266-symbole-oriente-saisir-langle-de-rotation" title="Permanent link">&para;</a></h3>
+<p>Les symboles sont très flexibles. Les symboles peuvent aussi être tournés. <img src="../../assets/images/geometrische-bearbeitung/media/image2.png" style="width:2.45703in;height:3.45313in" /></p>
+<h3 id="268-texte-oriente-parallele-a-la-ligne">268 - Texte orienté : parallèle à la ligne<a class="headerlink" href="#268-texte-oriente-parallele-a-la-ligne" title="Permanent link">&para;</a></h3>
+<p>Par défaut, le texte est placé parallèlement à la ligne.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image11.png" style="width:2.26246in;height:1.78683in" /></p>
+<h3 id="269-texte-oriente-libre">269 - Texte orienté : libre<a class="headerlink" href="#269-texte-oriente-libre" title="Permanent link">&para;</a></h3>
+<p>Les étiquettes peuvent en outre être placées, tournées, etc. individuellement via la barre d'outils d'étiquetage.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image24.png" style="width:3.46875in;height:0.44792in" /></p>
+<h3 id="270-texte-oriente-saisir-langle-de-rotation">270 - Texte orienté : saisir l'angle de rotation<a class="headerlink" href="#270-texte-oriente-saisir-langle-de-rotation" title="Permanent link">&para;</a></h3>
+<p>La rotation peut dépendre de la géométrie (polygones), ou être verticale/horizontale. Pour les lignes, il y a aussi parallèle à la ligne, curved ou horizontal.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image27.png" style="width:6.5in;height:2.11111in" /></p>
+<p>Ou lorsque le mode « Distance depuis le centre » est sélectionné :</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image50.png" style="width:4.1513in;height:4.07813in" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Accueil">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Accueil
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

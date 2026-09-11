@@ -1,0 +1,1810 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.github.io/av-qgis-documentation/guides/geometrische-bearbeitung/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="de">
+        
+          <link rel="alternate" href="../../fr/guides/geometrische-bearbeitung/" hreflang="fr">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Geometrische Bearbeitung - AV QGIS Dokumentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#geometrische-bearbeitung" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="../.." title="AV QGIS Dokumentation" class="md-header__button md-logo" aria-label="AV QGIS Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AV QGIS Dokumentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Geometrische Bearbeitung
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.768 3.96zl-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Sprache wechseln">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="de" class="md-select__link">
+              Deutsch
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../fr/guides/geometrische-bearbeitung/" hreflang="fr" class="md-select__link">
+              Français
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Teilen" aria-label="Teilen" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Hauptnavigation" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  User Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AV QGIS Dokumentation" class="md-nav__button md-logo" aria-label="AV QGIS Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AV QGIS Dokumentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geometrische Bearbeitung
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geometrische Bearbeitung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#geometrie-erstellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geometrie erstellen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Geometrie erstellen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#199-parallelitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        199 - Parallelität
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-frei-gewahlte-punkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        200 - Frei gewählte Punkte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#201-richtung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        201 - Richtung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#202-abstandsangaben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        202 - Abstandsangaben
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#203-richtung-und-abstand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        203 - Richtung und Abstand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-kreisbogen-uber-radiusmittelpunkt-oder-zwei-bogenpunkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        204 - Kreisbogen über Radius/Mittelpunkt oder zwei Bogenpunkte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#205-kreisbogen-uber-drei-punkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        205 - Kreisbogen über drei Punkte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#209-bestehende-geometrien-kopieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        209 - Bestehende Geometrien kopieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-punktimport-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        211 - Punktimport (Geometrie)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2111-uberlappung-automatisch-vermeiden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        211.1 - Überlappung automatisch vermeiden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-verlangerung-frei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        215 - Verlängerung: frei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216-verlangerung-nach-abstandsangabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        216 - Verlängerung nach Abstandsangabe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217-verlangerung-bis-zu-schnittpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        217 - Verlängerung bis zu Schnittpunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218-trimmung-frei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        218 - Trimmung: frei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#219-trimmung-nach-abstandsangabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        219 - Trimmung nach Abstandsangabe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#220-trimmung-bis-zu-schnittpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        220 - Trimmung bis zu Schnittpunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#221-drehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        221 - Drehen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-verschieben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        222 - Verschieben
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-fortsetzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        223 - Fortsetzen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-stutzpunkt-loschen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        224 - Stützpunkt löschen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#225-stutzpunkt-einfugen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        225 - Stützpunkt einfügen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#226-kopieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        226 - Kopieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#227-parallel-kopieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        227 - Parallel kopieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#231-teilen-gerade-gerade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        231 - Teilen: Gerade-Gerade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-teilen-gerade-flache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        234 - Teilen: Gerade-Fläche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-teilen-flache-flache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        236 - Teilen: Fläche-Fläche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-loschen-von-geometrien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        237 - Löschen von Geometrien
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#240-242-messen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        240-242 Messen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#244-246-250-fangfunktionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        244-246, 250 Fangfunktionen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#247-fangfunktion-erweiterter-schnittpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        247 Fangfunktion: Erweiterter Schnittpunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#251-fangfunktion-rechtwinkelquadrant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        251 - Fangfunktion: Rechtwinkel/Quadrant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#252-fangfunktion-kantenachstgelegener-punkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        252 - Fangfunktion: Kante/nächstgelegener Punkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#253-fangfunktion-lotfusspunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        253 - Fangfunktion: Lotfusspunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#254-fangfunktion-schwerpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        254 - Fangfunktion: Schwerpunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#255-fangfunktion-fur-punkte-zb-grenzpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        255 - Fangfunktion für Punkte (z.B. Grenzpunkt)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#258-auswahl-in-tabelle-markiert-geometrie-in-karte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        258 - Auswahl in Tabelle markiert Geometrie in Karte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#259-auswahl-in-karte-markiert-in-tabelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        259 - Auswahl in Karte markiert in Tabelle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#264-orientiertes-symbol-parallel-zu-gerade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        264 - Orientiertes Symbol: Parallel zu Gerade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#265-orientiertes-symbol-frei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        265 - Orientiertes Symbol: Frei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#266-orientiertes-symbol-drehwinkel-eingeben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        266 - Orientiertes Symbol: Drehwinkel eingeben
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#268-orientierter-text-parallel-zu-gerade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        268 - Orientierter Text: Parallel zu Gerade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#269-orientierter-text-frei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        269 - Orientierter Text: Frei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#270-orientierter-text-drehwinkel-eingeben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        270 - Orientierter Text: Drehwinkel eingeben
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#geometrie-erstellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geometrie erstellen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Geometrie erstellen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#199-parallelitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        199 - Parallelität
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-frei-gewahlte-punkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        200 - Frei gewählte Punkte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#201-richtung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        201 - Richtung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#202-abstandsangaben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        202 - Abstandsangaben
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#203-richtung-und-abstand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        203 - Richtung und Abstand
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-kreisbogen-uber-radiusmittelpunkt-oder-zwei-bogenpunkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        204 - Kreisbogen über Radius/Mittelpunkt oder zwei Bogenpunkte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#205-kreisbogen-uber-drei-punkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        205 - Kreisbogen über drei Punkte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#209-bestehende-geometrien-kopieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        209 - Bestehende Geometrien kopieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-punktimport-geometrie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        211 - Punktimport (Geometrie)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2111-uberlappung-automatisch-vermeiden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        211.1 - Überlappung automatisch vermeiden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-verlangerung-frei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        215 - Verlängerung: frei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216-verlangerung-nach-abstandsangabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        216 - Verlängerung nach Abstandsangabe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217-verlangerung-bis-zu-schnittpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        217 - Verlängerung bis zu Schnittpunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218-trimmung-frei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        218 - Trimmung: frei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#219-trimmung-nach-abstandsangabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        219 - Trimmung nach Abstandsangabe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#220-trimmung-bis-zu-schnittpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        220 - Trimmung bis zu Schnittpunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#221-drehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        221 - Drehen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-verschieben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        222 - Verschieben
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-fortsetzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        223 - Fortsetzen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-stutzpunkt-loschen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        224 - Stützpunkt löschen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#225-stutzpunkt-einfugen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        225 - Stützpunkt einfügen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#226-kopieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        226 - Kopieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#227-parallel-kopieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        227 - Parallel kopieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#231-teilen-gerade-gerade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        231 - Teilen: Gerade-Gerade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-teilen-gerade-flache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        234 - Teilen: Gerade-Fläche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-teilen-flache-flache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        236 - Teilen: Fläche-Fläche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-loschen-von-geometrien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        237 - Löschen von Geometrien
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#240-242-messen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        240-242 Messen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#244-246-250-fangfunktionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        244-246, 250 Fangfunktionen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#247-fangfunktion-erweiterter-schnittpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        247 Fangfunktion: Erweiterter Schnittpunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#251-fangfunktion-rechtwinkelquadrant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        251 - Fangfunktion: Rechtwinkel/Quadrant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#252-fangfunktion-kantenachstgelegener-punkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        252 - Fangfunktion: Kante/nächstgelegener Punkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#253-fangfunktion-lotfusspunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        253 - Fangfunktion: Lotfusspunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#254-fangfunktion-schwerpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        254 - Fangfunktion: Schwerpunkt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#255-fangfunktion-fur-punkte-zb-grenzpunkt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        255 - Fangfunktion für Punkte (z.B. Grenzpunkt)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#258-auswahl-in-tabelle-markiert-geometrie-in-karte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        258 - Auswahl in Tabelle markiert Geometrie in Karte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#259-auswahl-in-karte-markiert-in-tabelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        259 - Auswahl in Karte markiert in Tabelle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#264-orientiertes-symbol-parallel-zu-gerade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        264 - Orientiertes Symbol: Parallel zu Gerade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#265-orientiertes-symbol-frei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        265 - Orientiertes Symbol: Frei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#266-orientiertes-symbol-drehwinkel-eingeben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        266 - Orientiertes Symbol: Drehwinkel eingeben
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#268-orientierter-text-parallel-zu-gerade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        268 - Orientierter Text: Parallel zu Gerade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#269-orientierter-text-frei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        269 - Orientierter Text: Frei
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#270-orientierter-text-drehwinkel-eingeben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        270 - Orientierter Text: Drehwinkel eingeben
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="geometrische-bearbeitung">Geometrische Bearbeitung<a class="headerlink" href="#geometrische-bearbeitung" title="Permanent link">&para;</a></h1>
+<h2 id="geometrie-erstellen">Geometrie erstellen<a class="headerlink" href="#geometrie-erstellen" title="Permanent link">&para;</a></h2>
+<h3 id="199-parallelitat">199 - Parallelität<a class="headerlink" href="#199-parallelitat" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../assets/images/geometrische-bearbeitung/media/image34.png" style="width:3.10417in;height:2.27778in" /></td>
+<td><img src="../../assets/images/geometrische-bearbeitung/media/image44.png" style="width:1.94271in;height:0.99368in" /></td>
+</tr>
+<tr>
+<td><img src="../../assets/images/geometrische-bearbeitung/media/image5.png" style="width:3.10417in;height:0.61111in" /><img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.31771in;height:0.31771in" /></td>
+<td><img src="../../assets/images/geometrische-bearbeitung/media/image41.png" style="width:2.76563in;height:1.69888in" /></td>
+</tr>
+</tbody>
+</table>
+<p>Werkzeugleisten “Erweiterte Digitalisierungswerkzeugleiste” und “Einrastwerkzeuge” aktivieren.</p>
+<p>Im Editiermodus das Werkzeug “Objekt hinzufügen” auswählen und die erweiterten Digitalisierungswerkzeuge einschalten.</p>
+<p>Snapping aktivieren, damit ein Segment ausgewählt werden kann, zu welchem parallel gezeichnet wird. Parallel zeichnen auswählen.</p>
+<p><a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#parallel-and-perpendicular-lines"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#parallel-and-perpendicular-lines</u></a></p>
+<h3 id="200-frei-gewahlte-punkte">200 - Frei gewählte Punkte<a class="headerlink" href="#200-frei-gewahlte-punkte" title="Permanent link">&para;</a></h3>
+<p>Auf Punktlayer den Editiermodus einschalten. Das Werkzeug “Punktobjekt hinzufügen” auswählen. Auf der Karte mit einem Klick einen neuen Punkt erstellen.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image43.png" style="width:3.07813in;height:1.24118in" /></p>
+<h3 id="201-richtung">201 - Richtung<a class="headerlink" href="#201-richtung" title="Permanent link">&para;</a></h3>
+<p>In den erweiterten Digitalisierungswerkzeugen kann ein Winkel (Richtung) vorgegeben werden. Fürs direkte Zeichnen oder als Konstruktionslinie.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image36.png" style="width:4.30483in;height:2.23256in" /></p>
+<h3 id="202-abstandsangaben">202 - Abstandsangaben<a class="headerlink" href="#202-abstandsangaben" title="Permanent link">&para;</a></h3>
+<p>In den erweiterten Digitalisierungswerkzeugen kann ein Abstand vorgegeben werden. Fürs direkte Zeichnen oder als Konstruktionslinie.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image42.png" style="width:4.30729in;height:2.40905in" /></p>
+<h3 id="203-richtung-und-abstand">203 - Richtung und Abstand<a class="headerlink" href="#203-richtung-und-abstand" title="Permanent link">&para;</a></h3>
+<p>Eine Kombination aus Richtung und Abstand ist möglich - fürs direkte Zeichnen oder als Konstruktionslinie.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image20.png" style="width:4.27604in;height:2.23375in" /></p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr>
+<td><p>Für 201-203: <a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#absolute-reference-digitizing"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#absolute-reference-digitizing</u></a></p>
+<p>Und <a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#construction-mode"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#construction-mode</u></a></p></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="204-kreisbogen-uber-radiusmittelpunkt-oder-zwei-bogenpunkte">204 - Kreisbogen über Radius/Mittelpunkt oder zwei Bogenpunkte<a class="headerlink" href="#204-kreisbogen-uber-radiusmittelpunkt-oder-zwei-bogenpunkte" title="Permanent link">&para;</a></h3>
+<p>Mit der “Werkzeugleiste für Formen” können Kreise über Radius und Mittelpunkt oder zwei Bogenpunkte erstellt werden. Die gleiche Funktion ist für Kreisbögen nicht verfügbar.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image32.png" style="width:3.38854in;height:1.3867in" /></p>
+<p>Kreisbögen können in der “Werkzeugleiste für Formen” mit zwei Bogenpunkten und der Angabe des Radius erstellt werden.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image6.png" style="width:2.95373in;height:1.64677in" /><img src="../../assets/images/geometrische-bearbeitung/media/image40.png" style="width:2.35524in;height:0.43179in" /></p>
+<h3 id="205-kreisbogen-uber-drei-punkte">205 - Kreisbogen über drei Punkte<a class="headerlink" href="#205-kreisbogen-uber-drei-punkte" title="Permanent link">&para;</a></h3>
+<p>Mit der Standard “Digitalisierungswerkzeugleiste” und der Einstellung “mit Kurven digitalisieren” wird der Kreisbogen wird über 3 Punkte gezeichnet.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image18.png" style="width:2.78646in;height:1.59359in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image49.png" style="width:1.74479in;height:1.60123in" /></p>
+<h3 id="209-bestehende-geometrien-kopieren">209 - Bestehende Geometrien kopieren<a class="headerlink" href="#209-bestehende-geometrien-kopieren" title="Permanent link">&para;</a></h3>
+<p>Zu kopierendes Feature in der Attributtabelle des Layers selektieren und <strong>Ctrl-C</strong>.</p>
+<p>Ziellayer in Editiermodus schalten und die entsprechende Attributtabelle öffnen. Anschliessend <strong>Ctrl-V</strong> und die nötigen Attributwerte anpassen &gt; Speichern.</p>
+<h3 id="211-punktimport-geometrie">211 - Punktimport (Geometrie)<a class="headerlink" href="#211-punktimport-geometrie" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image15.png" style="width:6.5in;height:1.34722in" /></p>
+<p>Menu <strong>Layer &gt; Layer hinzufügen</strong> und Typ auswählen:</p>
+<p>Vektorlayer, Getrennte Textdatei, PostgreSQL-Layer, GPX-Layer, … hinzufügen.</p>
+<p>Ein Layer kann auch über Drag&amp;Drop ins QGIS-Projekt gezogen werden.</p>
+<h3 id="2111-uberlappung-automatisch-vermeiden">211.1 - Überlappung automatisch vermeiden<a class="headerlink" href="#2111-uberlappung-automatisch-vermeiden" title="Permanent link">&para;</a></h3>
+<p>In der Einrastwerkzeugleiste das “topologische Editieren” aktivieren und die Überlappungsregeln festlegen.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image31.png" style="width:3.91146in;height:1.09696in" /></p>
+<p>Bei der erweiterten Konfiguration können die Überlappungsregeln pro Layer individuell festgelegt werden.</p>
+<h3 id="215-verlangerung-frei">215 - Verlängerung: frei<a class="headerlink" href="#215-verlangerung-frei" title="Permanent link">&para;</a></h3>
+<p>Mit dem Stützpunktwerkzeug kann eine Geometrie frei verlängert werden.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image21.png" style="width:1.83142in;height:1.03344in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image3.png" style="width:1.77452in;height:1.03259in" /></p>
+<h3 id="216-verlangerung-nach-abstandsangabe">216 - Verlängerung nach Abstandsangabe<a class="headerlink" href="#216-verlangerung-nach-abstandsangabe" title="Permanent link">&para;</a></h3>
+<p>Mit Stützpunktwerkzeug und den erweiterten Digitalisierungswerkzeugen kann eine Geometrie um einen bestimmten Abstand verlängert werden.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image1.png" style="width:3.70313in;height:1.40433in" /></p>
+<h3 id="217-verlangerung-bis-zu-schnittpunkt">217 - Verlängerung bis zu Schnittpunkt<a class="headerlink" href="#217-verlangerung-bis-zu-schnittpunkt" title="Permanent link">&para;</a></h3>
+<p>“Objekt abschneiden/verlängern Werkzeug” aktivieren. Wichtig: Einrasten muss auf alle Layer und Segmente aktiviert sein.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image22.png" style="width:4.05729in;height:1.71655in" /></p>
+<p><a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#trim-extend-feature"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#trim-extend-feature</u></a></p>
+<p><strong>Oder</strong></p>
+<p>In der Einrastwerkzeugleiste das Einrasten auf Schnittpunkte aktivieren.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image4.png" style="width:1.89063in;height:0.86271in" /></p>
+<p>Mit den erweiterten Digitalisierungswerkzeugen den Parallelmodus aktivieren und auf der bestehenden Linie anwenden um den letzten Knotenpunkt bis zum Schnittpunkt zu verlängern oder verkürzen.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image33.png" style="width:2.59896in;height:2.11016in" /></p>
+<h3 id="218-trimmung-frei">218 - Trimmung: frei<a class="headerlink" href="#218-trimmung-frei" title="Permanent link">&para;</a></h3>
+<p>“Objekt abschneiden/verlängern Werkzeug” aktivieren.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image22.png" style="width:4.05729in;height:1.71655in" /></p>
+<p><a href="https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#trim-extend-feature"><u>https://docs.qgis.org/4.2/en/docs/user_manual/working_with_vector/editing_geometry_attributes.html#trim-extend-feature</u></a></p>
+<h3 id="219-trimmung-nach-abstandsangabe">219 - Trimmung nach Abstandsangabe<a class="headerlink" href="#219-trimmung-nach-abstandsangabe" title="Permanent link">&para;</a></h3>
+<p>Mit dem Stützpunktwerkzeug und den erweiterten Digitalisierungswerkzeuge kann eine Geometrie um einen bestimmten Abstand getrimmt werden.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image39.png" style="width:2.65625in;height:1.71875in" /></p>
+<h3 id="220-trimmung-bis-zu-schnittpunkt">220 - Trimmung bis zu Schnittpunkt<a class="headerlink" href="#220-trimmung-bis-zu-schnittpunkt" title="Permanent link">&para;</a></h3>
+<p>“Objekt abschneiden/verlängern Werkzeug” aktivieren. Wichtig: Einrasten muss auf alle Layer und Segmente aktiviert sein.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image22.png" style="width:4.05729in;height:1.71655in" /></p>
+<h3 id="221-drehen">221 - Drehen<img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38021in;height:0.38021in" /><a class="headerlink" href="#221-drehen" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image53.png" style="width:6.5in;height:2.08333in" /></p>
+<p><strong>Erweiterte Digitalisierungswerkzeuge &gt; Drehen</strong>.</p>
+<h3 id="222-verschieben">222 - Verschieben<img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38021in;height:0.38021in" /><a class="headerlink" href="#222-verschieben" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image48.png" style="width:3.70313in;height:1.9685in" /></p>
+<p>Erweiterte Digitalisierungswerkzeuge &gt; Verschieben.</p>
+<h3 id="223-fortsetzen">223 - Fortsetzen<a class="headerlink" href="#223-fortsetzen" title="Permanent link">&para;</a></h3>
+<p>Gerade beliebig fortsetzen. Mit dem Stützpunktwerkzeug ans Ende einer Linie, auf das “+” klicken und Linie fortsetzen.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image38.png" style="width:1.23958in;height:2.42708in" /></p>
+<h3 id="224-stutzpunkt-loschen">224 - Stützpunkt löschen<a class="headerlink" href="#224-stutzpunkt-loschen" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image29.png" style="width:1.86458in;height:1.33333in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image55.png" style="width:3.04743in;height:1.94859in" /></p>
+<p>Mit dem Stützpunktwerkzeug können ausgewählte Stützpunkte gelöscht werden. Über die Pfeiltasten der Tastatur (oder direkt über Mausklick) können die verschiedenen Stützpunkte angewählt und mit <strong>Delete</strong> gelöscht werden.</p>
+<h3 id="225-stutzpunkt-einfugen">225 - Stützpunkt einfügen<a class="headerlink" href="#225-stutzpunkt-einfugen" title="Permanent link">&para;</a></h3>
+<p>Mit dem Stützpunktwerkzeug können neue Stützpunkte hinzugefügt werden (über Doppelklick, oder über das "+"-Zeichen auf der Geometrie)</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image26.png" style="width:2.33371in;height:1.92188in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image8.png" style="width:3.21354in;height:1.15134in" /></p>
+<h3 id="226-kopieren">226 - Kopieren<a class="headerlink" href="#226-kopieren" title="Permanent link">&para;</a></h3>
+<p>Kopie der bestehenden Geometrie inkl. Attribute.</p>
+<p>Entweder mit <strong>Aktionswerkzeug</strong> aus der Attributwerkzeugleiste. Falls “Objekt duplizieren und digitalisieren” ausgewählt wird, muss die Geometrie neu gezeichnet werden, nur die Attribute werden von der Ursprungsgeometrie übernommen. Bei “Objekt duplizieren” wird das Objekt exakt am selben Ort dupliziert wie die Ursprungsgeometrie. Das kopierte Objekt muss anschliessend verschoben werden (siehe unten).</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image35.png" style="width:2.86979in;height:1.03082in" /><img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.54688in;height:0.38542in" /></p>
+<p>Oder über die Digitalisierungswerkzeugleiste und die Funktionen “Objekte kopieren”, “Objekte einfügen”. Anschliessend kann über die erweiterte Digitalisierungswerkzeugleiste das eingefügte Objekt verschoben werden.<img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38021in;height:0.38021in" /><img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38542in;height:0.38542in" /></p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image23.png" style="width:3.58854in;height:0.83414in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image10.png" style="width:1.71202in;height:0.85106in" /></p>
+<h3 id="227-parallel-kopieren">227 - Parallel kopieren<a class="headerlink" href="#227-parallel-kopieren" title="Permanent link">&para;</a></h3>
+<p>Wie unter 209 im Aktionswerkzeug “Objekt duplizieren” das gewählte Objekt duplizieren. In den erweiterten Digitalisierungswerkzeugen “Objekt verschieben” auswählen, den Parallelmodus aktivieren (siehe 199) und das Segment, zu welchem parallel eingefügt werden soll, anwählen.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image12.png" style="width:2.15376in;height:2.86323in" /></p>
+<h3 id="231-teilen-gerade-gerade">231 - Teilen: Gerade-Gerade<a class="headerlink" href="#231-teilen-gerade-gerade" title="Permanent link">&para;</a></h3>
+<p>Erweiterte Digitalisierungswerkzeuge &gt; Objekte zerteilen</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image47.png" style="width:1.77604in;height:1.0683in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image13.png" style="width:1.71504in;height:1.44508in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image9.png" style="width:1.44353in;height:1.07575in" /></p>
+<p>Oder, falls ein ganzes Layer durch ein anderes Layer zerteilt werden soll: Werkzeugkiste &gt; Mit Linien teilen.</p>
+<h3 id="234-teilen-gerade-flache">234 - Teilen: Gerade-Fläche<a class="headerlink" href="#234-teilen-gerade-flache" title="Permanent link">&para;</a></h3>
+<p>Wie 231.</p>
+<h3 id="236-teilen-flache-flache">236 - Teilen: Fläche-Fläche<a class="headerlink" href="#236-teilen-flache-flache" title="Permanent link">&para;</a></h3>
+<p>Kann durch eine Polylinie gelöst werden (ausreichend laut interner Diskussion). Siehe 231.</p>
+<h3 id="237-loschen-von-geometrien">237 - Löschen von Geometrien<img src="../../assets/images/geometrische-bearbeitung/media/image62.png" style="width:0.38021in;height:0.38021in" /><a class="headerlink" href="#237-loschen-von-geometrien" title="Permanent link">&para;</a></h3>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image17.png" style="width:3.67849in;height:2.55711in" /></p>
+<p>Im Editiermodus mit dem Selektierwerkzeug die zu löschende-n Geometrie-n auswählen und das Werkzeug “Ausgewähltes löschen” verwenden.</p>
+<h3 id="240-242-messen">240-242 Messen<a class="headerlink" href="#240-242-messen" title="Permanent link">&para;</a></h3>
+<p>240 - Messen von Entfernung</p>
+<p>241 - Messen von Winkel</p>
+<p>242 - Messen von Fläche</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image30.png" style="width:1.97326in;height:1.41383in" /></p>
+<h3 id="244-246-250-fangfunktionen">244-246, 250 Fangfunktionen<a class="headerlink" href="#244-246-250-fangfunktionen" title="Permanent link">&para;</a></h3>
+<p>Einrastwerkzeugleiste aktivieren.</p>
+<p>244 - Fangfunktion: Endpunkt</p>
+<p>245 - Fangfunktion: Stützpunkt</p>
+<p>246 - Fangfunktion: Schnittpunkt</p>
+<p>250 - Fangfunktion: Zentrumspunkt</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image25.png" style="width:2.89483in;height:1.94271in" /> <img src="../../assets/images/geometrische-bearbeitung/media/image46.png" style="width:1.41959in;height:1.1847in" /></p>
+<h3 id="247-fangfunktion-erweiterter-schnittpunkt">247 Fangfunktion: Erweiterter Schnittpunkt<a class="headerlink" href="#247-fangfunktion-erweiterter-schnittpunkt" title="Permanent link">&para;</a></h3>
+<p>Zwei Konstruktionslinien (parallel) zu den Geraden ziehen, für welche der erweiterte Schnittpunkt angezeigt werden soll. Auf den Schnittpunkt kann gesnappt werden.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image37.png" style="width:2.58854in;height:2.4677in" /></p>
+<h3 id="251-fangfunktion-rechtwinkelquadrant">251 - Fangfunktion: Rechtwinkel/Quadrant<a class="headerlink" href="#251-fangfunktion-rechtwinkelquadrant" title="Permanent link">&para;</a></h3>
+<p>In der erweiterten Digitalisierung das Einrasten auf übliche Winkel aktivieren. Oder mit entsprechenden Konstruktionslinien arbeiten.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image14.png" style="width:5.01042in;height:3.89583in" /></p>
+<h3 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="252-fangfunktion-kantenachstgelegener-punkt">252 - Fangfunktion: Kante/nächstgelegener Punkt<a class="headerlink" href="#252-fangfunktion-kantenachstgelegener-punkt" title="Permanent link">&para;</a></h3>
+<p>Snapping an Segment und Vertex aktivieren.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image7.png" style="width:3.125in;height:1.93056in" /></p>
+<p>Um den nächstgelegenen Punkt an der Kante zu finden, in der erweiterten Digitalisierung den senkrechten Modus einschalten.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image19.png" style="width:2.84294in;height:1.47531in" /></p>
+<h3 id="253-fangfunktion-lotfusspunkt">253 - Fangfunktion: Lotfusspunkt<a class="headerlink" href="#253-fangfunktion-lotfusspunkt" title="Permanent link">&para;</a></h3>
+<p>Snapping an Segment und Vertex aktivieren.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image7.png" style="width:3.125in;height:1.93056in" /></p>
+<p>Um den Lotfusspunkt zu finden, in der erweiterten Digitalisierung den senkrechten Modus einschalten.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image19.png" style="width:2.84294in;height:1.47531in" /></p>
+<h3 id="254-fangfunktion-schwerpunkt">254 - Fangfunktion: Schwerpunkt<a class="headerlink" href="#254-fangfunktion-schwerpunkt" title="Permanent link">&para;</a></h3>
+<p>Siehe 250.</p>
+<h3 id="255-fangfunktion-fur-punkte-zb-grenzpunkt">255 - Fangfunktion für Punkte (z.B. Grenzpunkt)<a class="headerlink" href="#255-fangfunktion-fur-punkte-zb-grenzpunkt" title="Permanent link">&para;</a></h3>
+<p>Punkte gelten als Stützpunkte, man kann also darauf snappen. In den erweiterten Optionen können die Einstellungen für jedes Layer individuell vorgenommen werden. Es könnte also z.B. nur auf das Grenzpunktlayer gesnappt werden.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image31.png" style="width:3.91146in;height:1.09696in" /></p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image45.png" style="width:6.5in;height:1.50449in" /></p>
+<h3 id="258-auswahl-in-tabelle-markiert-geometrie-in-karte">258 - Auswahl in Tabelle markiert Geometrie in Karte<a class="headerlink" href="#258-auswahl-in-tabelle-markiert-geometrie-in-karte" title="Permanent link">&para;</a></h3>
+<p>Karte und Tabelle sind verknüpft.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image52.png" style="width:2.65698in;height:2.38021in" /></p>
+<p>Auswahlwerkzeuge in der Tabelle: <img src="../../assets/images/geometrische-bearbeitung/media/image28.png" style="width:2.26847in;height:0.38989in" /></p>
+<h3 id="259-auswahl-in-karte-markiert-in-tabelle">259 - Auswahl in Karte markiert in Tabelle<a class="headerlink" href="#259-auswahl-in-karte-markiert-in-tabelle" title="Permanent link">&para;</a></h3>
+<p>Siehe 258</p>
+<p>Auswahlwerkzeuge in der Karte: <img src="../../assets/images/geometrische-bearbeitung/media/image54.png" style="width:1.78324in;height:0.39923in" /></p>
+<h3 id="264-orientiertes-symbol-parallel-zu-gerade">264 - Orientiertes Symbol: Parallel zu Gerade<a class="headerlink" href="#264-orientiertes-symbol-parallel-zu-gerade" title="Permanent link">&para;</a></h3>
+<p>Symbole sind sehr flexibel. Offsets parallel der Linie sind klar möglich. Symbole können auch rotiert werden.</p>
+<p>Über das Layer Styling Panel (oder über die Eigenschaften des Layers &gt; Symbologie) auf die Einstellungen zugreifen.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image51.png" style="width:4.4865in;height:2.79688in" /></p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image16.png" style="width:2.83854in;height:1.97504in" /></p>
+<p>Wenn nötig können bei Markierungslinien und gestrichelten Linien einzelne Markierungen noch manuell justiert werden.</p>
+<p>Zusätzlich sind über den Geometriegenerator sind fast keine Grenzen gesetzt.</p>
+<h3 id="265-orientiertes-symbol-frei">265 - Orientiertes Symbol: Frei<a class="headerlink" href="#265-orientiertes-symbol-frei" title="Permanent link">&para;</a></h3>
+<p>Symbole sind sehr flexibel. Über den Geometriegenerator sind fast keine Grenzen gesetzt.</p>
+<p>Falls Symbole komplett frei gesetzt werden sollen, kann man auf Annotations/Labels/zusätzliche Punktgeometrien zurückgreifen.</p>
+<h3 id="266-orientiertes-symbol-drehwinkel-eingeben">266 - Orientiertes Symbol: Drehwinkel eingeben<a class="headerlink" href="#266-orientiertes-symbol-drehwinkel-eingeben" title="Permanent link">&para;</a></h3>
+<p>Symbole sind sehr flexibel. Symbole können auch rotiert werden. <img src="../../assets/images/geometrische-bearbeitung/media/image2.png" style="width:2.45703in;height:3.45313in" /></p>
+<h3 id="268-orientierter-text-parallel-zu-gerade">268 - Orientierter Text: Parallel zu Gerade<a class="headerlink" href="#268-orientierter-text-parallel-zu-gerade" title="Permanent link">&para;</a></h3>
+<p>Per default wird Text parallel der Linien gesetzt.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image11.png" style="width:2.26246in;height:1.78683in" /></p>
+<h3 id="269-orientierter-text-frei">269 - Orientierter Text: Frei<a class="headerlink" href="#269-orientierter-text-frei" title="Permanent link">&para;</a></h3>
+<p>Labels können zusätzlich über die Label Toolbar individuell platziert, rotiert, etc. werden.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image24.png" style="width:3.46875in;height:0.44792in" /></p>
+<h3 id="270-orientierter-text-drehwinkel-eingeben">270 - Orientierter Text: Drehwinkel eingeben<a class="headerlink" href="#270-orientierter-text-drehwinkel-eingeben" title="Permanent link">&para;</a></h3>
+<p>Rotation kann geometrieabhängig gemacht werden (Polygons), oder vertikal/horizontal. Bei Linien zusätzlich parallel der Linie, curved oder horizontal.</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image27.png" style="width:6.5in;height:2.11111in" /></p>
+<p>Oder wenn "Abstand vom Zentrum" als Modus ausgewählt wird:</p>
+<p><img src="../../assets/images/geometrische-bearbeitung/media/image50.png" style="width:4.1513in;height:4.07813in" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Fußzeile" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Zurück: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Zurück
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
