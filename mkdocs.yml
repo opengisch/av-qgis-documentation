@@ -48,5 +48,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - User Guides:
-      - Quick Start: guides/setup.md
+      - Setup: guides/setup.md
       - Advanced Usage: guides/advanced.md
+      - Geometrische Bearbeitung: guides/geometrische-bearbeitung.md
+  - Installation: guides/installation.md
