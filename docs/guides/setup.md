@@ -1,3 +1,5 @@
+# Quick Start
+
 !!! note "Important Tip"
     This is a callout box highlighting key information.
 
@@ -7,3 +9,4 @@
 ```python
 def hello_world():
     print("Code blocks feature syntax highlighting.")
+```

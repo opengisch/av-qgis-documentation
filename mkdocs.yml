@@ -1,6 +1,49 @@
 site_name: My Documentation Site
+# Update to the actual Pages URL, e.g. https://<user>.github.io/av-qgis-documentation/
+site_url: https://example.github.io/av-qgis-documentation/
+
 theme:
   name: material
+  custom_dir: theme_overrides/
+  features:
+    - navigation.tabs
+    - navigation.tracking
+    # - navigation.instant # Not compatible with i18n plugin
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
+  palette:
+    - scheme: default
+      primary: light green
+      toggle:
+        icon: octicons/moon-24
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      toggle:
+        icon: octicons/sun-24
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
 
 nav:
   - Home: index.md
