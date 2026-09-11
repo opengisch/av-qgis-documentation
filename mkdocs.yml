@@ -1,4 +1,4 @@
-site_name: My Documentation Site
+site_name: AV QGIS Dokumentation
 # Update to the actual Pages URL, e.g. https://<user>.github.io/av-qgis-documentation/
 site_url: https://example.github.io/av-qgis-documentation/
 
@@ -45,10 +45,27 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      languages:
+        - locale: de
+          default: true
+          name: Deutsch
+          build: true
+        - locale: fr
+          name: Français
+          build: true
+          nav_translations:
+            Home: Accueil
+            User Guides: Guides
+            Geometrische Bearbeitung: Édition géométrique
+            Installation: Installation
+
 nav:
   - Home: index.md
   - User Guides:
-      - Setup: guides/setup.md
-      - Advanced Usage: guides/advanced.md
       - Geometrische Bearbeitung: guides/geometrische-bearbeitung.md
   - Installation: guides/installation.md
