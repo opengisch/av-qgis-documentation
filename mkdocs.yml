@@ -62,10 +62,8 @@ plugins:
             Home: Accueil
             User Guides: Guides
             Geometrische Bearbeitung: Édition géométrique
-            Installation: Installation
 
 nav:
   - Home: index.md
   - User Guides:
       - Geometrische Bearbeitung: guides/geometrische-bearbeitung.md
-  - Installation: guides/installation.md
