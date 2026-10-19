@@ -62,6 +62,7 @@ plugins:
             Home: Accueil
             User Guides: Guides
             Geometrische Bearbeitung: Édition géométrique
+            Formular-  & Tabellen-Funktionen: Formulaires et tables
 
 nav:
   - Home: index.md
