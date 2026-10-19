@@ -67,3 +67,4 @@ nav:
   - Home: index.md
   - User Guides:
       - Geometrische Bearbeitung: guides/geometrische-bearbeitung.md
+      - Formular-  & Tabellen-Funktionen: guides/formular-tabellen-funktionen.md
